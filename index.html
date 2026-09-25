@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday wishes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <main class="birthday-card">
+    <section class="welcome-screen" id="welcomeScreen" aria-labelledby="welcomeTitle">
+      <p class="eyebrow">A little surprise</p>
+      <h2 id="welcomeTitle">Something special is waiting</h2>
+      <p>Start the celebration, then make a wish.</p>
+      <button class="start-button" id="startButton" type="button">Start celebration <span>→</span></button>
+    </section>
+
+    <header class="toolbar" aria-label="Card controls">
+      <button class="icon-button" id="downloadButton" type="button" title="Save this birthday card as an image">↓ <span>Save</span></button>
+      <button class="icon-button" id="toolbarReplayButton" type="button" title="Replay the birthday surprise">↻ <span>Replay</span></button>
+      <button class="icon-button" id="setupButton" type="button" title="Personalize this card">✎ <span>Edit</span></button>
+    </header>
+
+    <section class="setup-panel" id="setupPanel" hidden>
+      <button class="close-button" id="closeSetup" type="button" aria-label="Close personalization panel">×</button>
+      <p class="eyebrow">Make it personal</p>
+      <h2>Birthday details</h2>
+      <form id="personalizationForm">
+        <label for="nameInput">Name</label>
+        <input id="nameInput" name="name" type="text" maxlength="40" placeholder="Their name" required>
+        <label for="messageInput">Your message</label>
+        <textarea id="messageInput" name="message" rows="4" maxlength="500" placeholder="Write something heartfelt..." required></textarea>
+        <label for="birthdayInput">Birthday date <span>(optional)</span></label>
+        <input id="birthdayInput" name="birthday" type="date">
+        <label for="photoInput">Favorite photo <span>(optional)</span></label>
+        <input id="photoInput" name="photo" type="file" accept="image/*">
+        <div class="theme-picker" role="group" aria-label="Choose a theme">
+          <button class="theme-swatch theme-night active" type="button" data-theme="night" aria-label="Night theme"></button>
+          <button class="theme-swatch theme-sunset" type="button" data-theme="sunset" aria-label="Sunset theme"></button>
+          <button class="theme-swatch theme-candy" type="button" data-theme="candy" aria-label="Candy theme"></button>
+        </div>
+        <button class="primary-button" type="submit">Save birthday card</button>
+      </form>
+    </section>
+
+    <div class="cake-area">
+      <div class="cake" id="cake" role="button" tabindex="0" aria-label="Blow out the birthday candle" title="Click the cake!">
+        <div class="candle">
+          <div class="flame" id="flame"></div>
+        </div>
+
+        <div class="cake-top"></div>
+        <div class="cream"></div>
+        <div class="cake-body">
+          <span class="drip drip1"></span>
+          <span class="drip drip2"></span>
+          <span class="drip drip3"></span>
+          <span class="drip drip4"></span>
+        </div>
+        <div class="cake-plate"></div>
+        <div class="cake-slice cake-slice-left" aria-hidden="true"></div>
+        <div class="cake-slice cake-slice-right" aria-hidden="true"></div>
+      </div>
+
+      <p class="eyebrow">A little celebration for</p>
+      <h1>happy birthday!</h1>
+      <p class="name" id="recipientName">Wint WarPhu</p>
+      <p class="hint" id="hint">Click the cake to make a wish</p>
+      <p class="message" id="message" hidden style="color: #ffd45c; font-weight: bold;"></p>
+      <div class="cake-note" id="cakeNote" hidden>Made with love, just for you.</div>
+      <p class="countdown" id="countdown" hidden></p>
+      <div class="photo-frame" id="photoFrame" hidden>
+        <img id="photoPreview" src="birthday-photo.jpg" alt="Birthday memory">
+      </div>
+    </div>
+
+    <div class="balloon balloon1" role="button" tabindex="0" aria-label="Pop balloon"></div>
+    <div class="balloon balloon2" role="button" tabindex="0" aria-label="Pop balloon"></div>
+    <div class="balloon balloon3" role="button" tabindex="0" aria-label="Pop balloon"></div>
+    <p class="balloon-message" id="balloonMessage" aria-live="polite" hidden></p>
+
+    <div class="gift" id="gift" role="button" tabindex="-1" aria-label="Open the birthday gift" aria-hidden="true">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <div class="gift-ribbon"></div>
+      <p id="giftLabel">With love</p>
+      
+    </div>
+
+    <div id="confetti"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
